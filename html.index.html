@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>African Calabash Collective</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Mono:wght@300;400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink:     #1a1208;
+  --clay:    #c4572a;
+  --clay-lt: #f0ddd1;
+  --sand:    #f5efe6;
+  --bone:    #e8dfd1;
+  --gold:    #b8892d;
+  --smoke:   #6b6056;
+  --white:   #fdfaf6;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+}
+
+img { width:100%; display:block; object-fit:cover; }
+
+/* ─── TICKER ─── */
+.ticker-wrap {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--clay);
+  overflow: hidden;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+.ticker-track {
+  display: flex;
+  gap: 0;
+  animation: tickerScroll 28s linear infinite;
+  white-space: nowrap;
+}
+.ticker-track span {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 0 32px;
+}
+.ticker-track span::after {
+  content: '◆';
+  margin-left: 32px;
+  opacity: 0.5;
+}
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── HEADER ─── */
+header {
+  position: fixed;
+  top: 32px; left: 0; right: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 48px;
+  height: 68px;
+  background: var(--white);
+  border-bottom: 1px solid var(--bone);
+}
+
+.logo-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.logo-top {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+.logo-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--ink);
+}
+
+nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+nav a {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--smoke);
+  transition: color 0.2s;
+}
+nav a:hover { color: var(--clay); }
+
+.nav-subscribe {
+  margin-left: 12px;
+  background: var(--ink);
+  color: var(--white) !important;
+  padding: 10px 18px;
+}
+.nav-subscribe:hover { background: var(--clay); color: var(--white) !important; }
+
+/* ─── HERO ─── */
+.hero {
+  padding-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.hero-left {
+  position: relative;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 64px 56px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.42;
+  filter: grayscale(30%);
+}
+
+.hero-left-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-issue {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-issue::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--clay);
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4.5rem, 7vw, 7.5rem);
+  font-weight: 700;
+  line-height: 0.88;
+  color: #fff;
+  margin-bottom: 28px;
+  letter-spacing: -1px;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--clay);
+}
+
+.hero-desc {
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.72);
+  max-width: 420px;
+  margin-bottom: 40px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 16px 28px;
+  transition: all 0.3s;
+}
+.hero-cta:hover {
+  background: var(--clay);
+  border-color: var(--clay);
+}
+.hero-cta-arrow { font-size: 18px; transition: transform 0.3s; }
+.hero-cta:hover .hero-cta-arrow { transform: translateX(6px); }
+
+/* ─── HERO RIGHT ─── */
+.hero-right {
+  background: var(--sand);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-right-top {
+  flex: 1.4;
+  position: relative;
+  overflow: hidden;
+}
+.hero-right-top img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+.hero-right-top:hover img { transform: scale(1.04); }
+
+.hero-right-bottom {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.mini-card {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--bone);
+}
+.mini-card:first-child { border-right: 1px solid var(--bone); }
+.mini-card img { height: 100%; object-fit: cover; }
+
+.mini-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,18,8,0.88) 0%, transparent 55%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 24px;
+}
+.mini-overlay .tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 6px;
+}
+.mini-overlay h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+}
+
+/* ─── DIVIDER ─── */
+.rule {
+  height: 1px;
+  background: var(--bone);
+  margin: 0 48px;
+}
+.rule-label {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 48px;
+  margin: 40px 0 36px;
+}
+.rule-label span {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--smoke);
+  white-space: nowrap;
+}
+.rule-label::before,
+.rule-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--bone);
+}
+
+/* ─── EDITORIAL GRID ─── */
+.editorial { padding: 0 48px 80px; }
+
+.grid-main {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2px;
+  background: var(--bone);
+}
+
+/* Big feature */
+.feat {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  position: relative;
+  overflow: hidden;
+  min-height: 640px;
+}
+.feat img { height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+.feat:hover img { transform: scale(1.04); }
+
+/* Tall right 1 */
+.tall-1 {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  position: relative;
+  overflow: hidden;
+  min-height: 310px;
+}
+.tall-1 img { height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+.tall-1:hover img { transform: scale(1.04); }
+
+/* Tall right 2 */
+.tall-2 {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  position: relative;
+  overflow: hidden;
+  min-height: 310px;
+}
+.tall-2 img { height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+.tall-2:hover img { transform: scale(1.04); }
+
+/* Text card below right */
+.text-card {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background: var(--ink);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quote-block {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  background: var(--clay);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Shared overlay style */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,18,8,0.9) 0%, rgba(26,18,8,0.1) 55%, transparent 80%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  color: #fff;
+}
+.card-overlay .tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-overlay .tag::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--clay);
+}
+.card-overlay h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.1rem;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+.card-overlay p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.75);
+}
+.feat .card-overlay h3 { font-size: 2.8rem; }
+
+.text-card .tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.text-card .tag::before { content: ''; width: 18px; height: 1px; background: var(--clay); }
+.text-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.85rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.text-card p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.65);
+  flex: 1;
+}
+.text-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clay);
+  text-decoration: none;
+}
+.text-card a:hover { color: #fff; }
+
+.quote-block blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.3;
+  color: #fff;
+  flex: 1;
+  margin-bottom: 20px;
+}
+.quote-block cite {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  font-style: normal;
+}
+
+/* ─── COLUMNS SECTION ─── */
+.columns-section {
+  padding: 80px 48px;
+  background: var(--sand);
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.col-sidebar {
+  position: sticky;
+  top: 120px;
+}
+.col-sidebar h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+}
+.col-sidebar h2 em { font-style: italic; font-weight: 300; color: var(--clay); }
+.col-sidebar p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--smoke);
+  margin-bottom: 28px;
+}
+.see-all {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 6px;
+  width: fit-content;
+  transition: color 0.2s, border-color 0.2s;
+}
+.see-all:hover { color: var(--clay); border-color: var(--clay); }
+
+.col-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.list-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 28px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--bone);
+  align-items: start;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s;
+}
+.list-item:first-child { border-top: 1px solid var(--bone); }
+.list-item-img {
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.list-item-img img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.list-item:hover .list-item-img img { transform: scale(1.06); }
+
+.list-item-body {}
+.list-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 10px;
+}
+.list-item-body h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+.list-item-body p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--smoke);
+}
+.list-meta {
+  margin-top: 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--bone);
+  color: #aaa09a;
+}
+
+/* ─── WINE FEATURE ─── */
+.wine-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 560px;
+}
+.wine-img {
+  position: relative;
+  overflow: hidden;
+}
+.wine-img img { height: 100%; object-fit: cover; }
+.wine-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 60%, var(--ink));
+}
+
+.wine-content {
+  background: var(--ink);
+  padding: 80px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.wine-content .kicker {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.wine-content .kicker::before {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--gold);
+}
+.wine-content h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.8rem;
+  font-weight: 700;
+  line-height: 0.95;
+  color: #fff;
+  margin-bottom: 28px;
+  letter-spacing: -1px;
+}
+.wine-content h2 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+}
+.wine-content p {
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.68);
+  margin-bottom: 40px;
+  max-width: 440px;
+}
+.wine-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--gold);
+  color: var(--ink);
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 16px 28px;
+  font-weight: 400;
+  transition: background 0.3s;
+  width: fit-content;
+}
+.wine-btn:hover { background: #d4a23a; }
+
+/* ─── PATTERN DIVIDER ─── */
+.pattern-band {
+  height: 64px;
+  background: var(--clay);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pattern-band svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  opacity: 0.18;
+}
+.pattern-band-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── NEWSLETTER ─── */
+.newsletter {
+  padding: 100px 48px;
+  background: var(--sand);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.nl-left h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 0.93;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.nl-left h2 em { font-style: italic; font-weight: 300; color: var(--clay); }
+.nl-left p {
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--smoke);
+}
+.nl-form { display: flex; flex-direction: column; gap: 16px; }
+.nl-form input[type="text"],
+.nl-form input[type="email"] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--bone);
+  padding: 14px 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.nl-form input::placeholder { color: var(--smoke); }
+.nl-form input:focus { border-bottom-color: var(--clay); }
+.nl-form button {
+  margin-top: 12px;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  padding: 18px 36px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.3s;
+}
+.nl-form button:hover { background: var(--clay); }
+.nl-note {
+  margin-top: 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--smoke);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ink);
+  padding: 60px 48px 32px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.footer-tagline {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.45);
+}
+.footer-col h5 {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: #fff; }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 28px;
+}
+.footer-bottom p {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.28);
+}
+.footer-social {
+  display: flex;
+  gap: 20px;
+}
+.footer-social a {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-social a:hover { color: var(--clay); }
+
+/* ─── MOBILE ─── */
+@media (max-width: 960px) {
+  header { padding: 0 24px; }
+  nav { display: none; }
+
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { min-height: 100svh; padding: 48px 32px; }
+  .hero-right { display: none; }
+
+  .editorial { padding: 0 24px 60px; }
+  .grid-main { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .feat, .tall-1, .tall-2 { grid-column: 1; grid-row: auto; min-height: 280px; }
+  .text-card, .quote-block { grid-column: 1; grid-row: auto; }
+
+  .columns-section { padding: 48px 24px; grid-template-columns: 1fr; gap: 32px; }
+  .col-sidebar { position: static; }
+
+  .wine-feature { grid-template-columns: 1fr; }
+  .wine-img { min-height: 300px; }
+  .wine-content { padding: 48px 32px; }
+  .wine-content h2 { font-size: 3rem; }
+
+  .newsletter { padding: 60px 24px; grid-template-columns: 1fr; gap: 40px; }
+  .nl-left h2 { font-size: 3rem; }
+
+  footer { padding: 48px 24px 24px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .rule-label, .rule { padding: 0 24px; }
+  .rule-label { padding: 0 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span>New Issue — Johannesburg After Dark</span>
+    <span>Winelands Travel Guide: Hemel-en-Aarde</span>
+    <span>Township Braai &amp; The Art of the Fire</span>
+    <span>Cape Malay: A Culinary Inheritance</span>
+    <span>Pinotage Rising — The World Takes Notice</span>
+    <span>New Issue — Johannesburg After Dark</span>
+    <span>Winelands Travel Guide: Hemel-en-Aarde</span>
+    <span>Township Braai &amp; The Art of the Fire</span>
+    <span>Cape Malay: A Culinary Inheritance</span>
+    <span>Pinotage Rising — The World Takes Notice</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-block">
+    <span class="logo-top">Est. MMXXV &nbsp;·&nbsp; Stellenbosch</span>
+    <span class="logo-main">African Calabash</span>
+  </div>
+  <nav>
+    <a href="#">Recipes</a>
+    <a href="#">Wine</a>
+    <a href="#">Lifestyle</a>
+    <a href="#">Travel</a>
+    <a href="#">Culture</a>
+    <a href="#" class="nav-subscribe">Subscribe</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <img class="hero-bg" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1600&auto=format&fit=crop" alt="">
+    <div class="hero-left-content">
+      <div class="hero-issue">Issue No. 14 &nbsp;/&nbsp; Winter 2025</div>
+      <h1 class="hero-title">
+        Modern<br>
+        <em>African</em><br>
+        Living
+      </h1>
+      <p class="hero-desc">
+        Food, wine, interiors, and the evolving
+        identity of contemporary African lifestyle —
+        from township braai to elevated dining.
+      </p>
+      <a href="#" class="hero-cta">
+        Read This Issue <span class="hero-cta-arrow">→</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-top">
+      <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=1400&auto=format&fit=crop" alt="Wine pouring">
+    </div>
+    <div class="hero-right-bottom">
+      <div class="mini-card">
+        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=800&auto=format&fit=crop" alt="Cape Malay dish">
+        <div class="mini-overlay">
+          <span class="tag">Recipes</span>
+          <h4>Cape Malay Classics</h4>
+        </div>
+      </div>
+      <div class="mini-card">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop" alt="Modern dining">
+        <div class="mini-overlay">
+          <span class="tag">Lifestyle</span>
+          <h4>Sunday Table</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<div class="rule-label">
+  <span>Editorial Journal</span>
+</div>
+
+<section class="editorial">
+  <div class="grid-main">
+    <!-- Feature -->
+    <article class="feat">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1600&auto=format&fit=crop" alt="African dining">
+      <div class="card-overlay">
+        <span class="tag">Feature Story</span>
+        <h3>The New Era of African Dining</h3>
+        <p>How a generation of chefs is reimagining continental cuisine for the world stage.</p>
+      </div>
+    </article>
+
+    <!-- Top right 1 -->
+    <article class="tall-1">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=900&auto=format&fit=crop" alt="Coffee culture">
+      <div class="card-overlay">
+        <span class="tag">Culture</span>
+        <h3>The Coffee Ceremony</h3>
+      </div>
+    </article>
+
+    <!-- Top right 2 -->
+    <article class="tall-2">
+      <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=900&auto=format&fit=crop" alt="Restaurant interior">
+      <div class="card-overlay">
+        <span class="tag">Interiors</span>
+        <h3>Spaces That Tell Stories</h3>
+      </div>
+    </article>
+
+    <!-- Text card -->
+    <div class="text-card">
+      <div>
+        <div class="tag">Editor's Note</div>
+        <h3>Why African Food Belongs at Every Table</h3>
+        <p>From the smoky depth of suya to the warm spice of bobotie, African cuisine is finally claiming its place in the global conversation — on its own terms.</p>
+      </div>
+      <a href="#">Read the Essay →</a>
+    </div>
+
+    <!-- Quote card -->
+    <div class="quote-block">
+      <blockquote>
+        "Food is memory. Every pot tells the story of who we are and where we come from."
+      </blockquote>
+      <cite>— Fatmata Binta, James Beard Award Winner</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES LIST -->
+<div class="rule-label"><span>Latest Stories</span></div>
+<section class="columns-section">
+  <div class="col-sidebar">
+    <h2>In This<br><em>Season</em></h2>
+    <p>Stories from the vineyards, the kitchen, the road, and the table.</p>
+    <a href="#" class="see-all">See All Stories →</a>
+  </div>
+
+  <div class="col-list">
+    <a class="list-item" href="#">
+      <div class="list-item-img">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop" alt="Restaurant">
+      </div>
+      <div class="list-item-body">
+        <div class="list-tag">Wine &amp; Pairings</div>
+        <h3>Pairing Pinotage with Township Braai Culture</h3>
+        <p>Where South African wine culture meets authentic culinary tradition, through fire, fellowship, and bold, unapologetic flavour.</p>
+        <div class="list-meta">8 min read &nbsp;·&nbsp; June 2025</div>
+      </div>
+    </a>
+
+    <a class="list-item" href="#">
+      <div class="list-item-img">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=600&auto=format&fit=crop" alt="Stellenbosch">
+      </div>
+      <div class="list-item-body">
+        <div class="list-tag">Travel</div>
+        <h3>Stellenbosch: The Wine Valley at the End of the World</h3>
+        <p>From cellar doors to mountain trails — a long weekend in the Cape winelands done properly.</p>
+        <div class="list-meta">11 min read &nbsp;·&nbsp; May 2025</div>
+      </div>
+    </a>
+
+    <a class="list-item" href="#">
+      <div class="list-item-img">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=600&auto=format&fit=crop" alt="Food prep">
+      </div>
+      <div class="list-item-body">
+        <div class="list-tag">Recipes</div>
+        <h3>Bobotie Reimagined — A Cape Malay Classic for Today</h3>
+        <p>A dish born from spice trade history, adapted for the modern kitchen without losing its soul.</p>
+        <div class="list-meta">6 min read &nbsp;·&nbsp; April 2025</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- WINE FEATURE -->
+<div class="rule-label"><span>Wine &amp; Pairings</span></div>
+<section class="wine-feature">
+  <div class="wine-img">
+    <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=1400&auto=format&fit=crop" alt="Wine pouring">
+  </div>
+  <div class="wine-content">
+    <div class="kicker">South African Wine Routes</div>
+    <h2>Hemel-en-<br><em>Aarde</em><br>Valley</h2>
+    <p>
+      A remote valley between mountain and sea, making some of the most compelling Pinot Noir and Chardonnay on the continent. The world is paying attention.
+    </p>
+    <a href="#" class="wine-btn">Explore the Route →</a>
+  </div>
+</section>
+
+<!-- PATTERN DIVIDER -->
+<div class="pattern-band" aria-hidden="true">
+  <svg viewBox="0 0 1200 64" preserveAspectRatio="xMidYMid slice">
+    <pattern id="kente" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="12" height="12" fill="none" stroke="#fff" stroke-width="1"/>
+      <rect x="12" y="12" width="12" height="12" fill="none" stroke="#fff" stroke-width="1"/>
+      <rect x="24" y="0" width="12" height="12" fill="none" stroke="#fff" stroke-width="1"/>
+      <rect x="0" y="24" width="12" height="12" fill="none" stroke="#fff" stroke-width="1"/>
+      <line x1="0" y1="0" x2="48" y2="48" stroke="#fff" stroke-width="0.5"/>
+      <line x1="48" y1="0" x2="0" y2="48" stroke="#fff" stroke-width="0.5"/>
+    </pattern>
+    <rect width="1200" height="64" fill="url(#kente)"/>
+  </svg>
+  <span class="pattern-band-text">Food &nbsp;·&nbsp; Wine &nbsp;·&nbsp; Culture &nbsp;·&nbsp; Travel &nbsp;·&nbsp; Living</span>
+</div>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="nl-left">
+    <h2>Stories<br>Worth<br><em>Savouring</em></h2>
+    <p>
+      Join the collective. A fortnightly letter on food, wine, culture, and modern African living — direct to your table.
+    </p>
+  </div>
+  <div>
+    <form class="nl-form" onsubmit="return false;">
+      <input type="text" placeholder="Your name">
+      <input type="email" placeholder="Your email address">
+      <button type="submit">Join the Collective</button>
+      <p class="nl-note">No spam. Unsubscribe whenever you like.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">African Calabash</div>
+      <p class="footer-tagline">Modern African living, food, wine, and culture — from Stellenbosch to the world.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="#">Recipes</a></li>
+        <li><a href="#">Wine & Pairings</a></li>
+        <li><a href="#">Lifestyle</a></li>
+        <li><a href="#">Travel</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Journal</h5>
+      <ul>
+        <li><a href="#">Latest Stories</a></li>
+        <li><a href="#">Collections</a></li>
+        <li><a href="#">Editors' Picks</a></li>
+        <li><a href="#">Archive</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>About</h5>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Contribute</a></li>
+        <li><a href="#">Advertise</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 African Calabash Collective. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="#">Instagram</a>
+      <a href="#">Pinterest</a>
+      <a href="#">YouTube</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
